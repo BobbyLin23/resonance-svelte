@@ -17,6 +17,9 @@ importers:
       '@t3-oss/env-core':
         specifier: ^0.13.10
         version: 0.13.10(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(zod@4.3.6)
+      '@tanstack/svelte-form':
+        specifier: ^1.28.3
+        version: 1.28.3(svelte@5.53.6)
       dotenv:
         specifier: ^17.3.1
         version: 17.3.1
@@ -884,6 +887,30 @@ packages:
     resolution: {integrity: sha512-TBf2sJjYeb28jD2U/OhwdW0bbOsxkWPwQ7SrqGf9sVcoYwZj7rkXljroBO9wKBut9XnmQLXanuDUeqQK0lGg/w==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
+
+  '@tanstack/devtools-event-client@0.4.0':
+    resolution: {integrity: sha512-RPfGuk2bDZgcu9bAJodvO2lnZeHuz4/71HjZ0bGb/SPg8+lyTA+RLSKQvo7fSmPSi8/vcH3aKQ8EM9ywf1olaw==}
+    engines: {node: '>=18'}
+
+  '@tanstack/form-core@1.28.3':
+    resolution: {integrity: sha512-DBhnu1d5VfACAYOAZJO8tsEUHjWczZMJY8v/YrtAJNWpwvL/3ogDuz8e6yUB2m/iVTNq6K8yrnVN2nrX0/BX/w==}
+
+  '@tanstack/pacer-lite@0.1.1':
+    resolution: {integrity: sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w==}
+    engines: {node: '>=18'}
+
+  '@tanstack/store@0.8.1':
+    resolution: {integrity: sha512-PtOisLjUZPz5VyPRSCGjNOlwTvabdTBQ2K80DpVL1chGVr35WRxfeavAPdNq6pm/t7F8GhoR2qtmkkqtCEtHYw==}
+
+  '@tanstack/svelte-form@1.28.3':
+    resolution: {integrity: sha512-95opkSn2N8fYOWi7K1cxSRPh38bVm3/tVZshEVSbGACOUioyqt2RSJpQ0DobdRLcStdP78slyZTXA3GDUhSNIw==}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  '@tanstack/svelte-store@0.9.1':
+    resolution: {integrity: sha512-4RYp0CXSB9tjlUZNl29mjraWeRquKzuaW+bGGI4s3kS6BWatgt7BfX4OtoLT8MTBdepW9ARwqHZ3s8YGpfOZkQ==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
@@ -3249,6 +3276,29 @@ snapshots:
       '@tailwindcss/oxide': 4.2.1
       tailwindcss: 4.2.1
       vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2)
+
+  '@tanstack/devtools-event-client@0.4.0': {}
+
+  '@tanstack/form-core@1.28.3':
+    dependencies:
+      '@tanstack/devtools-event-client': 0.4.0
+      '@tanstack/pacer-lite': 0.1.1
+      '@tanstack/store': 0.8.1
+
+  '@tanstack/pacer-lite@0.1.1': {}
+
+  '@tanstack/store@0.8.1': {}
+
+  '@tanstack/svelte-form@1.28.3(svelte@5.53.6)':
+    dependencies:
+      '@tanstack/form-core': 1.28.3
+      '@tanstack/svelte-store': 0.9.1(svelte@5.53.6)
+      svelte: 5.53.6
+
+  '@tanstack/svelte-store@0.9.1(svelte@5.53.6)':
+    dependencies:
+      '@tanstack/store': 0.8.1
+      svelte: 5.53.6
 
   '@types/cookie@0.6.0': {}
 
