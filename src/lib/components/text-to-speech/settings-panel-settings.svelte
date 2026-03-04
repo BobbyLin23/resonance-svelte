@@ -2,15 +2,14 @@
   import { Slider } from '$lib/components/ui/slider'
   import { sliders } from './sliders'
   import { getTTSFormContext } from './text-to-speech-form.svelte'
+  import VoiceSelector from './voice-selector.svelte'
 
   const form = getTTSFormContext()
   const isSubmittingStore = form.useStore(s => s.isSubmitting)
 </script>
 
 <div class='border-b border-dashed p-4'>
-  <p class='text-sm text-muted-foreground'>
-    Voice selector coming soon
-  </p>
+  <VoiceSelector />
 </div>
 <div class='p-4 flex-1'>
   <div class='flex flex-col gap-8'>

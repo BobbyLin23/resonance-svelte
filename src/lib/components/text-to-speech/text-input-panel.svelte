@@ -40,7 +40,7 @@
             onSubmit={() => form.handleSubmit()}
           />
         </div>
-        {#if text.length > 0}
+        {#if text?.length > 0}
           <div class='hidden items-center justify-between lg:flex'>
             <Badge variant='outline' class='gap-1.5 border-dashed'>
               <CoinsIcon class='size-3 text-chart-5' />

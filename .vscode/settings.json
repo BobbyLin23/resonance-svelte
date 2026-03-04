@@ -1,10 +1,12 @@
 {
-	"files.associations": {
-		"*.css": "tailwindcss"
-	},
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
+  "biome.enabled": false,
+  "oxc.enable": false,
 
   // Auto fix
   "editor.codeActionsOnSave": {

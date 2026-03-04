@@ -1,5 +1,6 @@
 <script lang='ts' module>
   import type { FormAsyncValidateOrFn, FormValidateOrFn, SvelteFormApi } from '@tanstack/svelte-form'
+  import type { Snippet } from 'svelte'
   import {
     createForm,
     formOptions,
@@ -17,21 +18,21 @@
     repetitionPenalty: z.number(),
   })
 
-  export type TTSFormVaules = z.infer<typeof ttsFormSchema>
+  export type TTSFormValues = z.infer<typeof ttsFormSchema>
 
   /** Form context type: SvelteFormApi + handleSubmit from FormApi */
   type TTSFormApi = SvelteFormApi<
-    TTSFormVaules,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormAsyncValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormAsyncValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
-    undefined | FormValidateOrFn<TTSFormVaules>,
+    TTSFormValues,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormAsyncValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormAsyncValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
+    undefined | FormValidateOrFn<TTSFormValues>,
     unknown
   > & { handleSubmit: () => void }
 
@@ -48,7 +49,7 @@
     return form
   }
 
-  export const defaultTTSValues: TTSFormVaules = {
+  export const defaultTTSValues: TTSFormValues = {
     text: '',
     voiceId: '',
     temperature: 0.8,
@@ -63,11 +64,14 @@
 </script>
 
 <script lang='ts'>
-  const { children } = $props()
+  const { children, defaultValues }: {
+    children?: Snippet
+    defaultValues?: Partial<TTSFormValues>
+  } = $props()
 
   const form = createForm(() => ({
     ...ttsFormOptions,
-    defaultValues: defaultTTSValues,
+    defaultValues: { ...defaultTTSValues, ...defaultValues },
     onSubmit: () => {
     // console.log(values)
     },

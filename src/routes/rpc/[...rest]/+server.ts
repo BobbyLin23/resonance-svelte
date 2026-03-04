@@ -16,10 +16,13 @@ const handler = new RPCHandler(router, {
   ],
 })
 
-const handle: RequestHandler = async ({ request }) => {
-  const context = request.headers.get('Authorization')
-    ? { user: { id: 'test', name: 'John Doe', email: 'john@doe.com' } }
-    : {}
+const handle: RequestHandler = async ({ request, locals }) => {
+  const { userId, orgId } = locals.auth()
+
+  const context = {
+    userId,
+    orgId,
+  }
 
   const { response } = await handler.handle(request, {
     prefix: '/rpc',

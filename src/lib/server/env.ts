@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { createEnv } from '@t3-oss/env-core'
 import { z } from 'zod'
+import 'dotenv/config'
 
 export const env = createEnv({
   server: {
@@ -12,4 +13,8 @@ export const env = createEnv({
     R2_BUCKET_NAME: z.string().min(1),
   },
   runtimeEnv: process.env,
+  onValidationError: (issues) => {
+    console.error('❌ Invalid environment variables:', JSON.stringify(issues, null, 2))
+    throw new Error('Invalid environment variables')
+  },
 })

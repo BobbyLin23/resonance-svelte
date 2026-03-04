@@ -1,28 +1,38 @@
 import { ORPCError, os } from '@orpc/server'
 
-import { z } from 'zod'
-
 export interface ORPCContext {
-  user?: z.infer<typeof UserSchema>
+  userId?: string | null
+  orgId?: string | null
 }
-
-export const UserSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.email(),
-})
 
 export const pub = os
   .$context<ORPCContext>()
 
 export const authed = pub.use(({ context, next }) => {
-  if (!context.user) {
+  if (!context.userId) {
     throw new ORPCError('UNAUTHORIZED')
   }
 
   return next({
     context: {
-      user: context.user,
+      userId: context.userId,
+    },
+  })
+})
+
+export const orgProceure = pub.use(({ context, next }) => {
+  if (!context.userId) {
+    throw new ORPCError('UNAUTHORIZED')
+  }
+
+  if (!context.orgId) {
+    throw new ORPCError('FORBIDDEN')
+  }
+
+  return next({
+    context: {
+      userId: context.userId,
+      orgId: context.orgId,
     },
   })
 })
